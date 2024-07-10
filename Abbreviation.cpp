@@ -1,3 +1,19 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+/*
+ * Complete the 'abbreviation' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. STRING a
+ *  2. STRING b
+ */
+
 string abbreviation(const std::string & a, const std::string & b)
 {
     const std::size_t a_size(a.size());
