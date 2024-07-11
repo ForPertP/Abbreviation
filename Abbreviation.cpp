@@ -45,3 +45,34 @@ string abbreviation(const std::string & a, const std::string & b)
     else
         return "NO";
 }
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string q_temp;
+    getline(cin, q_temp);
+
+    int q = stoi(ltrim(rtrim(q_temp)));
+
+    for (int q_itr = 0; q_itr < q; q_itr++) {
+        string a;
+        getline(cin, a);
+
+        string b;
+        getline(cin, b);
+
+        string result = abbreviation(a, b);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+
+
+
+
