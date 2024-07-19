@@ -22,11 +22,31 @@ class Result {
      */
 
     public static String abbreviation(String a, String b) {
-                return isAbbreviable[aSize][bSize] ? "YES" : "NO";
+        int aSize = a.length();
+        int bSize = b.length();
+        
+        boolean[][] isAbbreviable = new boolean[aSize + 1][bSize + 1];
+        
+        isAbbreviable[0][0] = true;
+        
+        for (int i = 1; i <= aSize && Character.isLowerCase(a.charAt(i - 1)); ++i)
+            isAbbreviable[i][0] = true;
 
+        for (int i = 1; i <= aSize; ++i)
+        {
+            for (int j = 1; j <= bSize; ++j)
+            {
+                if (Character.isLowerCase(a.charAt(i - 1)) && isAbbreviable[i - 1][j])
+                    isAbbreviable[i][j] = true;
+                    
+                if (isAbbreviable[i - 1][j - 1] && (Character.toUpperCase(a.charAt(i - 1)) == b.charAt(j - 1) || a.charAt(i - 1) == b.charAt(j - 1)))
+                    isAbbreviable[i][j] = true;
+            }
+        }
+        
+        return isAbbreviable[aSize][bSize] ? "YES" : "NO";
     }
 }
-
 
 public class Solution {
     public static void main(String[] args) throws IOException {
